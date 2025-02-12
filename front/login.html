@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion / Inscription</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(128, 0, 128, 0.5);
+            width: 300px;
+            text-align: center;
+        }
+
+        .container h2 {
+            color: #8a2be2;
+            margin-bottom: 20px;
+        }
+
+        .container input[type="text"],
+        .container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .container input[type="text"]::placeholder,
+        .container input[type="password"]::placeholder {
+            color: #bbb;
+        }
+
+        .container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #8a2be2;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .container button:hover {
+            background-color: #7b1fa2;
+        }
+
+        .container p {
+            margin-top: 15px;
+            color: #bbb;
+        }
+
+        .container a {
+            color: #8a2be2;
+            text-decoration: none;
+        }
+
+        .container a:hover {
+            text-decoration: underline;
+        }
+
+        .switch {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .switch button {
+            background: none;
+            border: none;
+            color: #8a2be2;
+            font-size: 16px;
+            cursor: pointer;
+            padding: 10px;
+            margin: 0 10px;
+        }
+
+        .switch button.active {
+            border-bottom: 2px solid #8a2be2;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="switch">
+            <button id="loginBtn" class="active">Connexion</button>
+            <button id="registerBtn">Inscription</button>
+        </div>
+
+        <div id="loginForm">
+            <h2>Connexion</h2>
+            <input type="text" placeholder="Nom d'utilisateur">
+            <input type="password" placeholder="Mot de passe">
+            <button>Se connecter</button>
+            <p>Pas de compte ? <a href="#" id="switchToRegister">S'inscrire</a></p>
+        </div>
+
+        <div id="registerForm" style="display: none;">
+            <h2>Inscription</h2>
+            <input type="text" placeholder="Nom d'utilisateur">
+            <input type="password" placeholder="Mot de passe">
+            <input type="password" placeholder="Confirmer le mot de passe">
+            <button>S'inscrire</button>
+            <p>Déjà un compte ? <a href="#" id="switchToLogin">Se connecter</a></p>
+        </div>
+    </div>
+
+    <script>
+        const loginBtn = document.getElementById('loginBtn');
+        const registerBtn = document.getElementById('registerBtn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const switchToRegister = document.getElementById('switchToRegister');
+        const switchToLogin = document.getElementById('switchToLogin');
+
+        loginBtn.addEventListener('click', () => {
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            loginBtn.classList.add('active');
+            registerBtn.classList.remove('active');
+        });
+
+        registerBtn.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            registerBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+        });
+
+        switchToRegister.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'block';
+            registerBtn.classList.add('active');
+            loginBtn.classList.remove('active');
+        });
+
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginForm.style.display = 'block';
+            registerForm.style.display = 'none';
+            loginBtn.classList.add('active');
+            registerBtn.classList.remove('active');
+        });
+    </script>
+
+</body>
+
+</html>
